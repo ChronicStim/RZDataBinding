@@ -1,0 +1,30 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "9C2CC04C44703DDF84F80B557779C3E0C7ED35AA",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "9C2CC04C44703DDF84F80B557779C3E0C7ED35AA" : 0,
+    "C4361F28E2A941D6281C2291400C36F16F96B814" : 9223372036854775807
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "19035F2F-7D0B-4E04-8FB0-00BAAEB7A056",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "9C2CC04C44703DDF84F80B557779C3E0C7ED35AA" : "RZDataBinding\/",
+    "C4361F28E2A941D6281C2291400C36F16F96B814" : ""
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "RZDBDemo",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "Example\/RZDBDemo.xcodeproj",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "github.com:jvisenti\/DataBinding.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "9C2CC04C44703DDF84F80B557779C3E0C7ED35AA"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "github.com:ChronicStim\/ChronicPainTracker.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "C4361F28E2A941D6281C2291400C36F16F96B814"
+    }
+  ]
+}
