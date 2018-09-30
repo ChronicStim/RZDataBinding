@@ -5,10 +5,10 @@ Pod::Spec.new do |s|
   s.description      = <<-DESC
                        Add callbacks when key paths of objects change, or bind values of two objects together either directly or using a function. Automatically cleanup before deallocation to avoid those nasty KVO observation info leaks.
                        DESC
-  s.homepage         = "https://github.com/Raizlabs/RZDataBinding"
+  s.homepage         = "https://github.com/ChronicStim/RZDataBinding.git"
   s.license          = 'MIT'
   s.author           = { "Rob Visentin" => "rob.visentin@raizlabs.com" }
-  s.source           = { :git => "https://github.com/Raizlabs/RZDataBinding.git", :tag => s.version.to_s }
+  s.source           = { :git => "https://github.com/ChronicStim/RZDataBinding.git", :branch => "CPT_version_4_0_x" }
 
   s.ios.deployment_target = '6.0'
   s.osx.deployment_target = '10.8'
