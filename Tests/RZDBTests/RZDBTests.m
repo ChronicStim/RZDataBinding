@@ -10,7 +10,13 @@
 
 #import "RZDataBinding.h"
 
-@interface RZDBTestObject : NSObject
+@protocol TestProtocol <NSObject>
+
+- (NSString *)helloString;
+
+@end
+
+@interface RZDBTestObject : NSObject <TestProtocol>
 
 @property (copy, nonatomic) NSString *string;
 @property (assign, nonatomic) NSInteger callbackCalls;
@@ -38,6 +44,11 @@
 {
     _string = [string copy];
     self.setStringCalls++;
+}
+
+- (NSString *)helloString
+{
+    return @"Hello";
 }
 
 #if !RZDB_AUTOMATIC_CLEANUP
@@ -125,15 +136,17 @@
     RZDBTestObject *testObj = [RZDBTestObject new];
     RZDBTestObject *observer = [RZDBTestObject new];
 
-    for ( NSUInteger i = 0; i < 500000; i++ ) {
+    for ( NSUInteger i = 0; i < 100000; i++ ) {
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
             @autoreleasepool {
                 if ( arc4random() % 2 == 0 ) {
-                    [testObj rz_addTarget:observer action:@selector(testCallback) forKeyPathChange:RZDB_KP_OBJ(testObj, string)];
+                    [testObj rz_addTarget:observer action:@selector(changeCallback) forKeyPathChange:RZDB_KP_OBJ(testObj, string)];
                 }
                 else {
-                    [testObj rz_removeTarget:observer action:@selector(testCallback) forKeyPathChange:RZDB_KP_OBJ(testObj, string)];
+                    [testObj rz_removeTarget:observer action:@selector(changeCallback) forKeyPathChange:RZDB_KP_OBJ(testObj, string)];
                 }
+
+                testObj.string = @"test";
             }
         });
     }
@@ -375,6 +388,19 @@
     }
     
     XCTAssertTrue([[testObjA valueForKey:RZDB_KP_OBJ(testObjA, string)] count] == 0, @"Registered observers were not automatically cleaned up.");
+}
+
+- (void)testProtocolKeypathHelper
+{
+    RZDBTestObject *testObject = [RZDBTestObject new];
+
+    // The test itself is trivial - the real test is whether or not this line compiles
+    NSString *keyPath = RZDB_KP_PROTOCOL(TestProtocol, helloString.mutableCopy);
+
+    id resultObject = [testObject valueForKeyPath:keyPath];
+
+    BOOL isMutableString = [resultObject isKindOfClass:[NSMutableString class]];
+    XCTAssertTrue(isMutableString);
 }
 
 @end
