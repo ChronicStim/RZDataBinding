@@ -134,6 +134,19 @@ OBJC_EXTERN NSString* const kRZDBChangeKeyKeyPath;
 - (void)rz_removeTarget:(id)target action:(SEL)action forKeyPathChange:(NSString *)keyPath;
 
 /**
+ *  Removes previously registered target/action pairs so that the actions are no longer called when the receiver changes value for keyPaths.
+ *
+ *  @param target  The target to remove. Must be non-nil.
+ *  @param action  The action to remove. Pass NULL to remove all actions registered for the target.
+ *  @param keyPaths An array of key paths to remove the target/action pair for.
+ *
+ *  @note If RZDB_AUTOMATIC_CLEANUP is enabled, then there is obligation to call this method before either the target or receiver are deallocated.
+ *
+ *  @see RZDB_KP macro for creating keypaths.
+ */
+- (void)rz_removeTarget:(id)target action:(SEL)action forKeyPathChanges:(NSArray <NSString *> *)keyPaths;
+
+/**
  *  Binds the value of a given key of the receiver to the value of a key path of another object. When the key path of the object changes, the bound key of the receiver is set to the same value. The receiver's value for the key will match the value for the object's foreign key path before this method returns.
  *
  *  @param key            The receiver's key whose value should be bound to the value of a foreign key path. Must be KVC compliant.

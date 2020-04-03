@@ -166,6 +166,13 @@ void rz_swizzleDeallocIfNeeded(Class class);
     [self rz_removeTarget:target action:action boundKey:nil forKeyPath:keyPath];
 }
 
+- (void)rz_removeTarget:(id)target action:(SEL)action forKeyPathChanges:(NSArray <NSString *> *)keyPaths
+{
+    for (NSString *keyPath in keyPaths) {
+        [self rz_removeTarget:target action:action forKeyPathChange:keyPath];
+    }
+}
+
 - (void)rz_bindKey:(NSString *)key toKeyPath:(NSString *)foreignKeyPath ofObject:(id)object
 {
     [self rz_bindKey:key toKeyPath:foreignKeyPath ofObject:object withTransform:nil];
